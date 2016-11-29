@@ -1,0 +1,5 @@
+﻿вместо JSP юзаю thymeleaf.
+про экземпляры книги не понял.
+
+запуск - mvn install jetty:run
+http://localhost:8082/ds/users

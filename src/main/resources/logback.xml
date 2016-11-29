@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <contextName>testmvc</contextName>
+    <jmxConfigurator />
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="ua.d8.testmvc" level="DEBUG"/>
+    <logger name="org.thymeleaf" level="WARN"/>
+    <logger name="org" level="WARN"/>
+
+    <root level="ALL">
+        <appender class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{ISO8601} | %-5level | %logger{36} | %m%n</pattern>
+            </encoder>
+        </appender>
+    </root>
+</configuration>

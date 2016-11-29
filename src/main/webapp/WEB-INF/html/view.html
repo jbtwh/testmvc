@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+
+<form action="#" th:action="@{/ds/users/edit(userid=*{id})}" th:object="${user}" method="post">
+    <fieldset>
+        <legend>EDIT USER:</legend>
+
+        <ul th:if="${#fields.hasErrors('*')}">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="name" th:text="#{user.name.label}"></label>
+        <input id="name" type="text" th:field="*{name}"/>
+
+
+        <label for="age" th:text="#{user.age.label}"></label>
+        <input id="age" type="text" th:field="*{age}" th:class="${#fields.hasErrors('age')}? 'fieldError'"/>
+
+
+        <label for="active" th:text="#{user.active.label}"></label>
+        <input id="active" type="checkbox" th:field="*{active}"/>
+
+        <table id="table">
+            <caption th:text="#{user.books.label}"/>
+            <thead>
+            <tr>
+                <th/>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="book, rowStat : *{books}">
+                <td>
+                    <label th:text="#{book.title.label}"></label>
+                    <input type="hidden" th:field="*{books[__${rowStat.index}__].id}"/>
+                    <input type="text" th:field="*{books[__${rowStat.index}__].title}" />
+                </td>
+            </tr>
+            </tbody>
+
+            <tfoot></tfoot>
+        </table>
+
+
+        <input type="submit" th:value="#{view.submit.label}" />
+    </fieldset>
+</form>
+
+</body>
+</html>
